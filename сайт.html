@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Льняная Палитра</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#35567C;
+    color:#F5F1ED;
+    font-family:'Montserrat',sans-serif;
+    overflow-x:hidden;
+}
+
+/* ========================= */
+/* ОБЩИЕ */
+/* ========================= */
+
+section{
+    padding:90px 8%;
+}
+
+h1,h2,h3{
+    font-family:'Cormorant Garamond',serif;
+    letter-spacing:2px;
+}
+
+.section-title{
+    text-align:center;
+    font-size:72px;
+    margin-bottom:70px;
+}
+
+/* ========================= */
+/* HERO */
+/* ========================= */
+
+.hero{
+    min-height:100vh;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.hero::before{
+    content:'';
+    position:absolute;
+    width:1200px;
+    height:1200px;
+    border:2px solid rgba(255,255,255,0.06);
+    transform:rotate(45deg);
+    top:-500px;
+    left:-300px;
+}
+
+.hero::after{
+    content:'';
+    position:absolute;
+    width:900px;
+    height:900px;
+    border:2px solid rgba(255,255,255,0.05);
+    transform:rotate(45deg);
+    bottom:-400px;
+    right:-250px;
+}
+
+.top-text{
+    font-size:18px;
+    letter-spacing:6px;
+    margin-bottom:20px;
+    z-index:2;
+}
+
+.main-title{
+    font-size:92px;
+    margin-bottom:10px;
+    z-index:2;
+}
+
+.line{
+    width:320px;
+    height:2px;
+    background:#F5F1ED;
+    margin:20px auto 50px;
+}
+
+.date{
+    font-size:28px;
+    letter-spacing:5px;
+    margin-bottom:60px;
+    z-index:2;
+}
+
+/* ========================= */
+/* MENU — ИСПРАВЛЕННАЯ СЕТКА */
+/* ========================= */
+
+.menu-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:35px;
+    max-width:1150px;
+    width:100%;
+    z-index:2;
+    margin:0 auto;
+}
+
+.menu-card{
+    background:rgba(255,255,255,1.0);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:30px;
+    overflow:hidden;
+    transition:0.45s;
+    cursor:pointer;
+    position:relative;
+    aspect-ratio: 1 / 1; /* Делает карточки квадратными и одинаковыми */
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.menu-card:hover{
+    transform:translateY(-12px) scale(1.03);
+    border-color:#F06B6B;
+    box-shadow:0 0 35px rgba(240,107,107,0.35);
+}
+
+.menu-card img{
+    width:100%;
+    height:100%;
+    object-fit:contain; /* Картинка помещается целиком */
+    display:block;
+    transition:0.4s;
+}
+
+.menu-card:hover img{
+    transform:scale(1.03);
+}
+
+/* ========================= */
+/* BUTTONS */
+/* ========================= */
+
+.buttons{
+    margin-top:60px;
+    display:flex;
+    gap:25px;
+    flex-wrap:wrap;
+    justify-content:center;
+    z-index:2;
+}
+
+.btn{
+    padding:18px 42px;
+    border:none;
+    border-radius:50px;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.4s;
+    font-weight:600;
+}
+
+.btn-main{
+    background:#F5F1ED;
+    color:#35567C;
+}
+
+.btn-main:hover{
+    transform:scale(1.05);
+}
+
+.btn-accent{
+    background:#F06B6B;
+    color:white;
+}
+
+.btn-accent:hover{
+    transform:scale(1.05);
+}
+
+.btn-disabled{
+    background:rgba(255,255,255,0.1);
+    color:rgba(255,255,255,0.5);
+    cursor:not-allowed;
+}
+
+/* ========================= */
+/* ПАСПОРТ */
+/* ========================= */
+
+.passport{
+    background:#F5F1ED;
+    color:#35567C;
+    border-radius:40px;
+    padding:60px;
+    position:relative;
+    overflow:hidden;
+}
+
+.passport h2{
+    font-size:54px;
+    margin-bottom:30px;
+}
+
+.passport-btn{
+    background:#35567C;
+    color:white;
+    border:none;
+    padding:18px 40px;
+    border-radius:40px;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.4s;
+}
+
+.passport-btn:hover{
+    transform:scale(1.05);
+}
+
+.passport-box{
+    background:white;
+    padding:40px;
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    margin-top:30px;
+}
+
+.passport-box p{
+    margin:15px 0;
+    font-size:18px;
+    line-height:1.8;
+}
+
+/* ========================= */
+/* MERCH */
+/* ========================= */
+
+.merch{
+    padding-top:120px;
+}
+
+.volunteer-note{
+    text-align:center;
+    color:#F06B6B;
+    font-size:22px;
+    margin-bottom:18px;
+    font-weight:600;
+}
+
+.merch-description{
+    text-align:center;
+    opacity:0.85;
+    margin-bottom:40px;
+    font-size:18px;
+}
+
+.merch-slider{
+    overflow:hidden;
+    width:100%;
+    position:relative;
+    margin-top:60px;
+}
+
+.merch-track{
+    display:flex;
+    gap:30px;
+    width:max-content;
+    animation:merchScroll 55s linear infinite;
+}
+
+@keyframes merchScroll{
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(-50%);
+    }
+}
+
+.merch-card{
+    width:320px;
+    min-width:320px;
+    background:rgba(255,255,255,0.05);
+    border-radius:28px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,0.08);
+    transition:0.4s;
+}
+
+.merch-card:hover{
+    transform:translateY(-12px);
+}
+
+.merch-card img{
+    width:100%;
+    height:340px;
+    object-fit:cover;
+    display:block;
+}
+
+.merch-content{
+    padding:25px;
+}
+
+.merch-content h3{
+    font-size:34px;
+    margin-bottom:14px;
+    font-family:'Cormorant Garamond',serif;
+}
+
+.price{
+    color:#F06B6B;
+    font-size:22px;
+    margin-bottom:8px;
+    font-weight:600;
+}
+
+.stamps{
+    opacity:0.85;
+    font-size:17px;
+}
+
+.volunteer-card{
+    border:1px solid #F06B6B;
+}
+
+.badge-text{
+    color:#F06B6B;
+    line-height:1.7;
+    font-size:17px;
+}
+
+/* ========================= */
+/* HISTORY */
+/* ========================= */
+
+.history{
+    background:#35567C;
+    color:#ffffff;
+}
+
+.history-box{
+    max-width:1100px;
+    margin:auto;
+    background:#837bdf33;
+    border-radius:30px;
+    padding:60px;
+    line-height:2;
+    font-size:18px;
+    box-shadow:0 10px 40px rgba(0,0,0,0.08);
+}
+
+.history-box p{
+    margin-bottom:25px;
+}
+
+/* ========================= */
+/* FOOTER */
+/* ========================= */
+
+footer{
+    padding:80px 8%;
+    text-align:center;
+    opacity:0.7;
+}
+
+/* ========================= */
+/* АДАПТИВ */
+/* ========================= */
+
+@media(max-width:900px){
+    .main-title{
+        font-size:58px;
+    }
+    .section-title{
+        font-size:50px;
+    }
+    .menu-grid{
+        grid-template-columns:repeat(2, 1fr); /* На планшетах 2 колонки */
+    }
+    .menu-card{
+        aspect-ratio: 1 / 1;
+    }
+    .passport{
+        padding:30px;
+    }
+    .history-box{
+        padding:35px;
+    }
+    .buttons{
+        flex-direction:column;
+        align-items:center;
+    }
+}
+
+@media(max-width:550px){
+    .menu-grid{
+        grid-template-columns:1fr; /* На телефонах 1 колонка */
+    }
+    .main-title{
+        font-size:42px;
+    }
+    .section-title{
+        font-size:36px;
+    }
+    .date{
+        font-size:20px;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<section class="hero">
+
+<div class="top-text">
+XIX МЕЖДУНАРОДНЫЙ
+</div>
+
+<h1 class="main-title">
+ЛЬНЯНАЯ ПАЛИТРА
+</h1>
+
+<div class="line"></div>
+
+<div class="date">
+10 — 13 ИЮЛЯ 2026
+</div>
+
+<!-- ИСПРАВЛЕННАЯ СЕТКА — убрал дублирование, оставил одну -->
+<div class="menu-grid">
+
+<div class="menu-card">
+<img src="horeo.jpg" alt="Хореография">
+</div>
+
+<div class="menu-card">
+<img src="design.jpg" alt="Дизайн и мода">
+</div>
+
+<div class="menu-card">
+<img src="music.jpg" alt="Музыка">
+</div>
+
+<div class="menu-card">
+<img src="arhitectura.jpg" alt="Архитектура">
+</div>
+
+<div class="menu-card">
+<img src="zhivopis.jpg" alt="Живопись">
+</div>
+
+<div class="menu-card">
+<img src="foto.jpg" alt="Фото и видео">
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="btn btn-main">
+Хочу прийти
+</button>
+
+<button class="btn btn-accent">
+Участвую
+</button>
+
+<button class="btn btn-disabled">
+Зарегистрироваться
+</button>
+
+<button class="btn btn-main">
+Хочу быть волонтёром
+</button>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="passport">
+
+<h2>
+Паспорт фестиваля
+</h2>
+
+<button class="passport-btn" onclick="togglePassport()">
+Получить паспорт фестиваля
+</button>
+
+<div class="passport-box" id="passportText">
+
+<p>
+Успейте получить паспорт фестиваля!
+</p>
+
+<p>
+Штамп за каждый мастер-класс — ваш пропуск к эксклюзивному мерчу в конце дня.
+</p>
+
+<p>
+✔ Проходите мастер-классы
+</p>
+
+<p>
+✔ Копите штампы
+</p>
+
+<p>
+✔ В финале — обменивайте их на крутой мерч!
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="merch" id="merch">
+
+<h2 class="section-title">
+МЕРЧ
+</h2>
+
+<div class="volunteer-note">
+Только волонтёрам вручаются именные бейджи мероприятия
+</div>
+
+<div class="merch-description">
+Получайте штампы на мастер-классах и обменивайте их на эксклюзивный фестивальный мерч.
+</div>
+
+<div class="merch-slider">
+
+<div class="merch-track">
+
+<!-- ХУДИ 1 -->
+<div class="merch-card">
+<img src="hydi1.jpg" alt="Худи 1">
+
+<div class="merch-content">
+<h3>Худи</h3>
+<div class="price">3599 ₽</div>
+<div class="stamps">или 16 штампов</div>
+</div>
+</div>
+
+<!-- ХУДИ 2 -->
+<div class="merch-card">
+<img src="hydi2.jpg" alt="Худи 2">
+
+<div class="merch-content">
+<h3>Худи — Вариант II</h3>
+<div class="price">3599 ₽</div>
+<div class="stamps">или 16 штампов</div>
+</div>
+</div>
+
+<!-- ФУТБОЛКА 1 -->
+<div class="merch-card">
+<img src="fytbolka1.jpg" alt="Футболка 1">
+
+<div class="merch-content">
+<h3>Футболка</h3>
+<div class="price">2799 ₽</div>
+<div class="stamps">или 12 штампов</div>
+</div>
+</div>
+
+<!-- ФУТБОЛКА 2 -->
+<div class="merch-card">
+<img src="fytbolka2.jpg" alt="Футболка 2">
+
+<div class="merch-content">
+<h3>Футболка — Вариант II</h3>
+<div class="price">2799 ₽</div>
+<div class="stamps">или 12 штампов</div>
+</div>
+</div>
+
+<!-- БЛОКНОТ 1 -->
+<div class="merch-card">
+<img src="bloknot1.jpg" alt="Блокнот 1">
+
+<div class="merch-content">
+<h3>Блокнот</h3>
+<div class="price">599 ₽</div>
+<div class="stamps">или 7 штампов</div>
+</div>
+</div>
+
+<!-- БЛОКНОТ 2 -->
+<div class="merch-card">
+<img src="bloknot2.jpg" alt="Блокнот 2">
+
+<div class="merch-content">
+<h3>Блокнот — Вариант II</h3>
+<div class="price">599 ₽</div>
+<div class="stamps">или 7 штампов</div>
+</div>
+</div>
+
+<!-- ШОППЕР -->
+<div class="merch-card">
+<img src="symka.jpg" alt="Шоппер">
+
+<div class="merch-content">
+<h3>Сумка-шоппер</h3>
+<div class="price">899 ₽</div>
+<div class="stamps">или 9 штампов</div>
+</div>
+</div>
+
+<!-- КЕПКА 1 -->
+<div class="merch-card">
+<img src="kepka1.jpg" alt="Кепка 1">
+
+<div class="merch-content">
+<h3>Кепка</h3>
+<div class="price">599 ₽</div>
+<div class="stamps">или 9 штампов</div>
+</div>
+</div>
+
+<!-- КЕПКА 2 -->
+<div class="merch-card">
+<img src="kepka2.jpg" alt="Кепка 2">
+
+<div class="merch-content">
+<h3>Кепка — Вариант II</h3>
+<div class="price">599 ₽</div>
+<div class="stamps">или 9 штампов</div>
+</div>
+</div>
+
+<!-- БЕЙДЖ ВОЛОНТЁРА -->
+<div class="merch-card volunteer-card">
+<img src="bedj.jpg" alt="Бейдж волонтёра">
+
+<div class="merch-content">
+<h3>Именной бейдж</h3>
+<div class="badge-text">
+Доступно только волонтёрам фестиваля
+</div>
+</div>
+</div>
+
+<!-- ДУБЛИКАТЫ ДЛЯ БЕСКОНЕЧНОЙ ПРОКРУТКИ -->
+<div class="merch-card">
+<img src="hydi1.jpg">
+<div class="merch-content">
+<h3>Худи</h3>
+<div class="price">3599 ₽</div>
+<div class="stamps">или 16 штампов</div>
+</div>
+</div>
+
+<div class="merch-card">
+<img src="fytbolka1.jpg">
+<div class="merch-content">
+<h3>Футболка</h3>
+<div class="price">2799 ₽</div>
+<div class="stamps">или 12 штампов</div>
+</div>
+</div>
+
+<div class="merch-card">
+<img src="symka.jpg">
+<div class="merch-content">
+<h3>Шоппер</h3>
+<div class="price">899 ₽</div>
+<div class="stamps">или 9 штампов</div>
+</div>
+</div>
+
+<div class="merch-card volunteer-card">
+<img src="bedj.jpg">
+<div class="merch-content">
+<h3>Именной бейдж</h3>
+<div class="badge-text">
+Только для волонтёров
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<section class="history" id="history">
+
+<h2 class="section-title">
+ИСТОРИЯ ФЕСТИВАЛЯ
+</h2>
+
+<div class="history-box">
+
+<p>
+Международный фестиваль моды «Плёс на Волге. Льняная палитра» проводится в Плёсе Ивановской области с 2005 года.
+</p>
+
+<p>
+Это событие стало символом слияния традиций русского текстиля, национальных промыслов и современной моды, с особым акцентом на использование льна.
+</p>
+
+<p>
+Фестиваль моды «Льняная палитра» имени Вячеслава Зайцева проходит в Плёсе ежегодно и объединяет дизайнеров, художников, театры моды и творческие коллективы со всей страны.
+</p>
+
+<p>
+Фестиваль возник как площадка для демонстрации модной одежды из льна, включая коллекции с элементами народных промыслов, а также современные разработки льняной ткани, обуви и аксессуаров.
+</p>
+
+<p>
+Главная цель фестиваля — развитие льняной индустрии, поддержка молодых дизайнеров, укрепление межрегиональных культурных связей и формирование отечественного рынка моды.
+</p>
+
+<p>
+На протяжении многих лет фестиваль возглавлял Вячеслав Михайлович Зайцев — народный художник России, лауреат Государственной премии РФ, академик и член Национальной академии индустрии моды.
+</p>
+
+<p>
+Он был не только президентом фестиваля, но и наставником для молодых дизайнеров: внимательно смотрел показы, детально разбирал коллекции и давал профессиональные рекомендации участникам.
+</p>
+
+<p>
+После смерти Вячеслава Зайцева в 2023 году фестиваль получил его имя в знак памяти и уважения к его вкладу в российскую моду и искусство.
+</p>
+
+<p>
+В 2024 году фестивалю был официально присвоен международный статус.
+</p>
+
+<p>
+Одной из важнейших традиций фестиваля стало проведение фестиваля детских театров моды, который лишь немного младше самого мероприятия.
+</p>
+
+<p>
+Вячеслав Зайцев особенно ценил это направление, считая, что именно детские театры помогают появляться новым талантам — дизайнерам, моделям, портным и артистам.
+</p>
+
+<p>
+За годы существования фестиваля количество творческих коллективов и театров моды в Ивановской области значительно увеличилось, а сам фестиваль стал одной из главных культурных площадок региона.
+</p>
+
+</div>
+
+</section>
+
+<footer>
+© ЛЬНЯНАЯ ПАЛИТРА — Международный фестиваль искусств
+</footer>
+
+<script>
+
+function togglePassport(){
+    const text = document.getElementById('passportText');
+    if(text.style.display === 'none'){
+        text.style.display = 'block';
+    } else {
+        text.style.display = 'none';
+    }
+}
+
+</script>
+
+</body>
+</html>
